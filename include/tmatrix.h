@@ -136,7 +136,7 @@ public:
   TDynamicVector operator+(const TDynamicVector& v)
   {
       if (sz != v.sz)
-          throw std::exception("Vectors are different in size");
+          throw std::out_of_range("Vectors are different in size");
       TDynamicVector temp(sz);
       for (size_t i = 0; i < sz; i++)
           temp.pMem[i] = pMem[i] + v.pMem[i];
@@ -145,7 +145,7 @@ public:
   TDynamicVector operator-(const TDynamicVector& v)
   {
       if (sz != v.sz)
-          throw std::exception("Vectors are different in size");
+          throw std::out_of_range("Vectors are different in size");
       TDynamicVector temp(sz);
       for (size_t i = 0; i < sz; i++)
           temp.pMem[i] = pMem[i] - v.pMem[i];
@@ -154,7 +154,7 @@ public:
   T operator*(const TDynamicVector& v) noexcept(noexcept(T()))
   {
       if (sz != v.sz)
-          throw std::exception("Vectors are different in size");
+          throw std::out_of_range("Vectors are different in size");
       T res= 0;
       for (size_t i = 0; i < sz; i++) {
           res += pMem[i] * v.pMem[i];
@@ -237,7 +237,7 @@ public:
   TDynamicVector<T> operator*(const TDynamicVector<T>& v)
   {
       if (sz != v.sz)
-          throw std::exception("Vectors are different in size");
+          throw std::out_of_range("Vectors are different in size");
       TDynamicVector<T> temp(sz);
       for (size_t i = 0; i < sz; i++) 
           temp[i] = pMem[i] * v;
@@ -248,7 +248,7 @@ public:
   TDynamicMatrix operator+(const TDynamicMatrix& m)
   {
       if (sz != m.sz)
-          throw std::exception("Matrices are different in size");
+          throw std::out_of_range("Matrices are different in size");
       TDynamicMatrix temp(sz);
       for (size_t i = 0; i < sz; i++)
           temp.pMem[i] = pMem[i] + m.pMem[i];
@@ -257,7 +257,7 @@ public:
   TDynamicMatrix operator-(const TDynamicMatrix& m)
   {
       if (sz != m.sz)
-          throw std::exception("Matrices are different in size");
+          throw std::out_of_range("Matrices are different in size");
       TDynamicMatrix temp(sz);
       for (size_t i = 0; i < sz; i++)
           temp.pMem[i] = pMem[i] - m.pMem[i];
@@ -266,7 +266,7 @@ public:
   TDynamicMatrix operator*(const TDynamicMatrix& m)
   {
       if (sz != m.sz)
-          throw std::exception("Matrices are different in size");
+          throw std::out_of_range("Matrices are different in size");
       TDynamicMatrix temp(sz);
       for (size_t i = 0; i < sz; i++) {
           for (size_t j = 0; j < sz; j++) {
