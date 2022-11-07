@@ -151,15 +151,15 @@ public:
           temp.pMem[i] = pMem[i] - v.pMem[i];
       return temp;
   }
-  T operator*(const TDynamicVector& v) noexcept(noexcept(T()))
+  T operator*(const TDynamicVector& v)
   {
       if (sz != v.sz)
-          throw std::out_of_range("Vectors are different in size");
-      T res= 0;
-      for (size_t i = 0; i < sz; i++) {
-          res += pMem[i] * v.pMem[i];
+          throw std::logic_error("Product of two vectors with different size is undefined");
+      T result = pMem[0] * v.pMem[0];
+      for (int i = 1; i < sz; i++) {
+          result = result + pMem[i] * v.pMem[i];
       }
-      return res;
+      return result;
   }
 
   friend void swap(TDynamicVector& lhs, TDynamicVector& rhs) noexcept
