@@ -211,5 +211,14 @@ TEST(TDynamicVector, cant_multiply_vectors_with_not_equal_size)
 	ASSERT_ANY_THROW(a * b);
 }
 
-
+TEST(TDynamicVector, move_constructor)
+{
+	TDynamicVector<int> a(40);
+	a[0] = 420;
+	a[19] = 240;
+	TDynamicVector<int> b = std::move(a);
+	EXPECT_EQ(420, b[0]);
+	EXPECT_EQ(240, b[19]);
+	EXPECT_EQ(0, a.size());
+}
 
